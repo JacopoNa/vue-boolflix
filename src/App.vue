@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent @componentSearch="search"/>
-    <MainComponent :movieCards="movies"/>
+    <MainComponent :movieCards="movies" :seriesCards="series"/>
   </div>
 </template>
 
@@ -21,12 +21,18 @@ export default {
         url: 'https://api.themoviedb.org/3/search/',
         apiKey: 'f9e16a68756f4413e1205b08a8d5365a',
         movies: [],
+        series: []
       }
   },
   methods: {
     getMovies(apiParams) {
       axios.get(this.url + 'movie', apiParams).then((response) => {
         this.movies = response.data.results;
+      }) 
+    },
+    getTvSeries(apiParams) {
+      axios.get(this.url + 'tv', apiParams).then((response) => {
+        this.series = response.data.results;
       }) 
     },
     search: function (searchText) {
@@ -39,6 +45,7 @@ export default {
       };
 
       this.getMovies(paramsObj);
+      this.getTvSeries(paramsObj);
     }
   }
 }

@@ -1,7 +1,13 @@
 <template>
     <div class="main">
+        <h3>FILM</h3>
         <ul class="cards d-flex flex-wrap">
             <ContentComponent v-for="content in movieCards" :key="content.id" :item="content"/>
+        </ul>
+
+        <h3>SERIE TV</h3>
+        <ul class="cards d-flex flex-wrap">
+            <ContentComponent v-for="content in seriesCards" :key="content.id" :item="content"/>
         </ul>
     </div>
 </template>
@@ -16,13 +22,17 @@ export default {
     },
     props: {
         "movieCards": Array,
+        "seriesCards": Array
     }
 }
 </script>
 
 <style lang="scss" scoped>
     .main {
-        height: 100vh;
-        background-color: grey;        
+        background-color: grey;
+        
+        h3 {
+            margin-left: 10px;
+        }
     }
 </style>
