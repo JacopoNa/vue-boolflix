@@ -29,10 +29,11 @@ export default {
 
 <style lang="scss" scoped>
     .main {
-        background-color: grey;
+        background-color: #1E1E1E;
         
         h3 {
             margin-left: 10px;
+            color: white;
         }
     }
 </style>
